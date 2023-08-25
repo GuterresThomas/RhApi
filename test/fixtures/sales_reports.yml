@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  report_date: 2023-08-24
+  total_sales: 9.99
+  transaction_count: 1
+
+two:
+  report_date: 2023-08-24
+  total_sales: 9.99
+  transaction_count: 1
