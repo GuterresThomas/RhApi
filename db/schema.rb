@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_25_002959) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_26_001243) do
   create_table "bulletin_boards", force: :cascade do |t|
     t.string "title"
     t.string "body"
@@ -72,6 +72,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_25_002959) do
     t.integer "stock_quantity"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "product_category_id", null: false
+    t.index ["product_category_id"], name: "index_products_on_product_category_id"
   end
 
   create_table "sale_items", force: :cascade do |t|
@@ -111,6 +113,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_25_002959) do
   end
 
   add_foreign_key "payments", "sales"
+  add_foreign_key "products", "product_categories"
   add_foreign_key "sale_items", "products"
   add_foreign_key "sale_items", "sales"
   add_foreign_key "sales", "customers"

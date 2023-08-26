@@ -2,41 +2,41 @@ class SalesController < ApplicationController
     before_action :set_sale, only: [:show, :update, :destroy]
 
     def index
-      @sales = Sale.all
-      render json: @sales
+      @saless = Sale.all
+      render json: @saless
     end
   
     def show
-      render json: @sale
+      render json: @sales
     end
   
     def create
-      @sale = Sale.new(sale_params)
+      @sales = Sale.new(sale_params)
   
-      if @sale.save
-        render json: @sale, status: :created
+      if @sales.save
+        render json: @sales, status: :created
       else
-        render json: @sale.errors, status: :unprocessable_entity
+        render json: @sales.errors, status: :unprocessable_entity
       end
     end
   
     def update
-      if @sale.update(sale_params)
-        render json: @sale
+      if @sales.update(sale_params)
+        render json: @sales
       else
-        render json: @sale.errors, status: :unprocessable_entity
+        render json: @sales.errors, status: :unprocessable_entity
       end
     end
   
     def destroy
-      @sale.destroy
+      @sales.destroy
       head :no_content
     end
   
     private
   
     def set_sale
-      @sale = Sale.find(params[:id])
+      @sales = Sale.find(params[:id])
     end
   
     def sale_params
