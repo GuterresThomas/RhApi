@@ -19,11 +19,11 @@ class EmployeesController < ApplicationController
     end
 
     def update
-        @employees = Employee.find(params[:id])
-        if @employees.update(employee_params)
-          render json: employees
+        @employee = Employee.find(params[:id]) # Usar @employee em vez de @employees
+        if @employee.update(employee_params)
+          render json: @employee # Corrigir para renderizar o funcionário atualizado
         else
-            render json: { error: "Something went wrong" }, status: :unprocessable_entity
+          render json: { error: "Something went wrong" }, status: :unprocessable_entity
         end
     end
 
