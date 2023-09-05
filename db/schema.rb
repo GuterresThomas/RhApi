@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_09_05_134310) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_05_154358) do
   create_table "bulletin_boards", force: :cascade do |t|
     t.string "title"
     t.string "body"
@@ -95,6 +95,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_09_05_134310) do
     t.datetime "updated_at", null: false
     t.string "customer_name"
     t.string "payment_method"
+    t.string "sale_product"
     t.index ["customer_id"], name: "index_sales_on_customer_id"
   end
 

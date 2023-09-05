@@ -18,16 +18,13 @@ class SalesController < ApplicationController
 
       @sales.payment_method = params[:sale][:payment_method]
 
+      product_info = params[:sale][:sale_product]
+      if product_info
+        @sale.sale_product = product_info
+      end
+
       if @sales.save
         
-        sale_params[:sale_items].each do |sale_item_params|
-          sale_item = @sale.sale_items.build(sale_item_params)
-          # Calcule o subtotal do sale_item com base na quantidade e preço do produto
-          sale_item.subtotal = sale_item.quantity * sale_item.product.price
-          sale_item.save
-        end
-
-
         render json: @sales, status: :created
       else
         render json: @sales.errors, status: :unprocessable_entity
