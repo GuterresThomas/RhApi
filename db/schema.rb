@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_26_001243) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_04_234908) do
   create_table "bulletin_boards", force: :cascade do |t|
     t.string "title"
     t.string "body"
@@ -93,6 +93,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_26_001243) do
     t.integer "customer_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "customer_name"
     t.index ["customer_id"], name: "index_sales_on_customer_id"
   end
 
