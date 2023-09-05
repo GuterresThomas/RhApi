@@ -2,8 +2,8 @@ class SalesController < ApplicationController
   before_action :set_sale, only: [:show, :update, :destroy]
 
   def index
-    @sales = Sale.all
-    render json: @sales
+    @sales = Sale.includes(:payment).all # Inclua os pagamentos associados às vendas
+    render json: @sales, include: :payment
   end
 
   def show
@@ -15,6 +15,8 @@ class SalesController < ApplicationController
     if customer
       @sales = Sale.new(sale_params)
       @sales.customer_name = customer.name
+
+      @sales.payment_method = params[:sale][:payment_method]
 
       if @sales.save
         render json: @sales, status: :created
