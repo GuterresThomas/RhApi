@@ -12,7 +12,8 @@ class AuthController < ApplicationController
     private
   
     def generate_token(user)
-      JWT.encode({ user_id: user.id }, 'your-secret-key', 'HS256')
+      token = JWT.encode({ user_id: user.id }, 'senha1234', 'HS256')
+      puts "Token gerado: #{token}" # Agora você pode imprimir o token
+      token
     end
 end
-  
